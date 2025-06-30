@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-M-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mohd Maroof | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <title>My Info Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
+    :root {
+      --primary-blue: #2563eb;
+      --light-blue: #38bdf8;
+      --dark-blue: #1e3a8a;
+      --text-dark: #0f172a;
+      --text-medium: #334155;
+      --text-light: #f8fafc;
+      --bg-light: #f8fafc;
+      --bg-dark: #0f172a;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,107 +26,193 @@
     }
 
     body {
-      background-color: #f8fafc;
-      color: #1e293b;
+      background-color: var(--bg-light);
+      color: var(--text-medium);
+      line-height: 1.6;
     }
 
     header {
-  background: linear-gradient(90deg, #1e3a8a, #2563eb);
-  padding: 1rem 2rem;
-}
-
+      background: linear-gradient(90deg, var(--dark-blue), var(--primary-blue));
+      padding: 1rem 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
 
     nav {
       max-width: 1100px;
       margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      display: flex; /* Flexbox for main navigation layout */
+      justify-content: space-between; /* Pushes h1 to left, ul to right */
+      align-items: center; /* Vertically centers h1 and ul */
+      flex-wrap: wrap; /* Keeps it responsive */
     }
 
     nav h1 {
-      color: #fff;
-      font-size: 1.8rem;
+      color: var(--text-light);
+      font-size: 2rem;
       font-weight: 800;
+      margin: 0; /* Ensure no default vertical margin */
+      padding: 0; /* Ensure no default vertical padding */
     }
 
     nav ul {
       display: flex;
       flex-wrap: wrap;
       list-style: none;
-      gap: 1.5rem;
+      gap: 2.2rem; /* Increased gap for better spacing with larger text */
+      margin: 0; /* Ensure no default vertical margin */
+      padding: 0; /* Ensure no default vertical padding */
+      transform: translateY(2px); /* FINE-TUNING: Adjust this value as needed for perfect visual alignment */
+                                  /* Positive value moves it down, negative moves it up. */
     }
 
     nav ul li a {
-      color: #fff;
+      color: var(--text-light);
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s ease;
+      font-size: 1.15rem; /* Slightly larger font size for menu words */
+      transition: color 0.3s ease, transform 0.2s ease;
+      position: relative;
     }
 
     nav ul li a:hover {
-      color: #38bdf8;
+      color: var(--light-blue);
+      transform: translateY(-2px);
+    }
+
+    /* Underline animation for nav links */
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      display: block;
+      margin-top: 5px;
+      right: 0;
+      background: var(--light-blue);
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+      left: 0;
+      background: var(--light-blue);
     }
 
     section {
       max-width: 960px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
+      margin: 3.5rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    section:hover {
+        transform: translateY(-5px);
     }
 
     section h2 {
-      font-size: 2rem;
-      color: #0f172a;
-      margin-bottom: 1rem;
-      border-left: 4px solid #38bdf8;
-      padding-left: 12px;
+      font-size: 2.2rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      border-left: 5px solid var(--light-blue);
+      padding-left: 15px;
+      font-weight: 700;
     }
 
     p, ul {
-      font-size: 1rem;
-      color: #334155;
+      font-size: 1.1rem;
+      color: var(--text-medium);
+      margin-bottom: 1rem;
     }
 
     ul li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.7rem;
+      padding-left: 0.5rem;
+    }
+
+    strong {
+        color: var(--text-dark);
+        font-weight: 700;
     }
 
     .download-button {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin-top: 1rem;
-      padding: 10px 20px;
-      background-color: #38bdf8;
-      color: #fff;
-      border-radius: 6px;
-      font-weight: 600;
+      gap: 10px;
+      margin-top: 1.5rem;
+      padding: 12px 25px;
+      background-color: var(--light-blue);
+      color: var(--text-light);
+      border-radius: 8px;
+      font-weight: 700;
       text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
     }
 
     .download-button:hover {
       background-color: #0ea5e9;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(14, 165, 233, 0.4);
+    }
+
+    a {
+        color: var(--light-blue);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--primary-blue);
+        text-decoration: underline;
     }
 
     footer {
-      background-color: #0f172a;
-      color: #fff;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
       text-align: center;
-      padding: 1rem;
-      margin-top: 4rem;
+      padding: 1.5rem;
+      margin-top: 5rem;
+      font-size: 0.95rem;
     }
 
     @media (max-width: 768px) {
       nav {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: column; /* Stack vertically on small screens */
+        align-items: center; /* Center items horizontally when stacked */
         gap: 1rem;
+      }
+
+      nav h1 {
+        margin-bottom: 1rem;
       }
 
       nav ul {
         flex-direction: column;
         gap: 1rem;
+        width: 100%;
+        text-align: center;
+        transform: translateY(0); /* Reset transform for mobile stacking */
+      }
+
+      nav ul li a {
+          display: block;
+          padding: 0.5rem 0;
+      }
+
+      section {
+        padding: 1.5rem;
+        margin: 2rem auto;
+      }
+
+      section h2 {
+          font-size: 1.8rem;
+      }
+
+      p, ul {
+          font-size: 1rem;
       }
     }
   </style>
@@ -123,7 +220,7 @@
 <body>
   <header>
     <nav>
-      <h1>Mohd Maroof</h1>
+      <h1>My Info Hub</h1>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -134,16 +231,17 @@
     </nav>
   </header>
 
-  <section id="home">
+  <section id="home" data-aos="fade-up">
     <h2>Welcome</h2>
-    <p>Hello! I'm <strong>Mohd Maroof</strong>, a Computer Science student focused on backend development and real-world problem solving.</p>
+    <p>Hello! I'm <strong>Mohd Maroof</strong>, a **Computer Science student** focused on **backend development** and **real-world problem solving**.</p>
   </section>
 
-  <section id="about">
+  <section id="about" data-aos="fade-up">
     <h2>About Me</h2>
     <p>
-      I'm <strong>Mohd Maroof</strong>, a Computer Science undergraduate passionate about backend development and problem-solving. I enjoy turning complex challenges into simple, elegant solutions using code. I specialize in building scalable web applications and working with databases. Currently, I’m focused on expanding my technical skills and contributing to meaningful projects.
+      I'm <strong>Mohd Maroof</strong>, a **Computer Science undergraduate** passionate about **backend development** and **problem-solving**. I enjoy turning complex challenges into simple, elegant solutions using code. I specialize in building **scalable web applications** and working with **databases**. Currently, I’m focused on expanding my technical skills and contributing to meaningful projects.
     </p>
+    <h3>My Skills:</h3>
     <ul>
       <li><strong>Languages:</strong> Python, PHP, SQL</li>
       <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
@@ -151,26 +249,22 @@
     </ul>
   </section>
 
-  <section id="projects">
+  <section id="projects" data-aos="fade-up">
     <h2>Projects</h2>
     <ul>
       <li>
-        <strong>Memory Game</strong> – Sharpen Your Memory a memory card game to enhance brain power and focus. Match cards and improve short-term memory.<br>
+        <strong>Memory Game</strong> – Sharpen Your Memory, a memory card game to enhance brain power and focus. Match cards and improve short-term memory.<br>
         <a href="https://maroofby.itch.io/memory-game" target="_blank" class="download-button">🎮 Download & Play</a>
       </li>
     </ul>
   </section>
 
-
-
-
-
-  <section id="resume">
+  <section id="resume" data-aos="fade-up">
     <h2>Resume</h2>
-    <p>You can download my resume <a href="resume.pdf" download style="color: #38bdf8; text-decoration: underline;">here</a>.</p>
+    <p>You can download my resume <a href="resume.pdf" download>here</a>.</p>
   </section>
 
-  <section id="contact">
+  <section id="contact" data-aos="fade-up">
     <h2>Contact</h2>
     <p><strong>Email:</strong> mohdmaroof481@gmail.com</p>
     <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mohd-maroof-by481" target="_blank">linkedin.com/in/mohd-maroof-by481</a></p>
@@ -178,12 +272,27 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 Mohd Maroof. Built with simplicity and focus.</p>
+    <p>&copy; 2025 Maroof. Built with simplicity and focus.</p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 700, once: true });
+    AOS.init({
+      duration: 1000,
+      offset: 120,
+      easing: 'ease-in-out',
+      once: true,
+    });
+
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
   </script>
 </body>
 </html>
