@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-M-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Info Hub</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
@@ -29,47 +29,52 @@
       background-color: var(--bg-light);
       color: var(--text-medium);
       line-height: 1.6;
+      /* REMOVED: padding-top as header is no longer fixed */
     }
 
     header {
       background: linear-gradient(90deg, var(--dark-blue), var(--primary-blue));
       padding: 1rem 2rem;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+      /* REMOVED: All fixed positioning, transform, opacity, and transition properties */
+      /* It will now behave like a regular block element */
     }
+
+    /* REMOVED: header.header-show class */
 
     nav {
       max-width: 1100px;
       margin: auto;
-      display: flex; /* Flexbox for main navigation layout */
-      justify-content: space-between; /* Pushes h1 to left, ul to right */
-      align-items: center; /* Vertically centers h1 and ul */
-      flex-wrap: wrap; /* Keeps it responsive */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     nav h1 {
       color: var(--text-light);
       font-size: 2rem;
       font-weight: 800;
-      margin: 0; /* Ensure no default vertical margin */
-      padding: 0; /* Ensure no default vertical padding */
+      margin: 0;
+      padding: 0;
     }
 
     nav ul {
       display: flex;
       flex-wrap: wrap;
       list-style: none;
-      gap: 2.2rem; /* Increased gap for better spacing with larger text */
-      margin: 0; /* Ensure no default vertical margin */
-      padding: 0; /* Ensure no default vertical padding */
-      transform: translateY(2px); /* FINE-TUNING: Adjust this value as needed for perfect visual alignment */
-                                  /* Positive value moves it down, negative moves it up. */
+      gap: 2.2rem;
+      margin: 0;
+      padding: 0;
+      transform: translateY(2px);
     }
 
     nav ul li a {
       color: var(--text-light);
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.15rem; /* Slightly larger font size for menu words */
+      font-size: 1.15rem;
       transition: color 0.3s ease, transform 0.2s ease;
       position: relative;
     }
@@ -77,25 +82,6 @@
     nav ul li a:hover {
       color: var(--light-blue);
       transform: translateY(-2px);
-    }
-
-    /* Underline animation for nav links */
-    nav ul li a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      display: block;
-      margin-top: 5px;
-      right: 0;
-      background: var(--light-blue);
-      transition: width 0.3s ease;
-    }
-
-    nav ul li a:hover::after {
-      width: 100%;
-      left: 0;
-      background: var(--light-blue);
     }
 
     section {
@@ -148,16 +134,21 @@
       border-radius: 8px;
       font-weight: 700;
       text-decoration: none;
-      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
       box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
+      border: 1px solid var(--light-blue);
     }
 
     .download-button:hover {
-      background-color: #0ea5e9;
+      background-color: var(--primary-blue);
+      color: var(--text-light);
       transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(14, 165, 233, 0.4);
+      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+      border-color: var(--primary-blue);
+      text-decoration: none;
     }
 
+    /* Styles for general links */
     a {
         color: var(--light-blue);
         text-decoration: none;
@@ -166,6 +157,16 @@
 
     a:hover {
         color: var(--primary-blue);
+        text-decoration: underline;
+    }
+
+    /* Specific styles for links in the Contact section */
+    #contact a {
+        color: var(--primary-blue);
+    }
+
+    #contact a:hover {
+        color: var(--dark-blue);
         text-decoration: underline;
     }
 
@@ -179,9 +180,12 @@
     }
 
     @media (max-width: 768px) {
+      body {
+        /* REMOVED: padding-top for mobile as header is no longer fixed */
+      }
       nav {
-        flex-direction: column; /* Stack vertically on small screens */
-        align-items: center; /* Center items horizontally when stacked */
+        flex-direction: column;
+        align-items: center;
         gap: 1rem;
       }
 
@@ -194,7 +198,7 @@
         gap: 1rem;
         width: 100%;
         text-align: center;
-        transform: translateY(0); /* Reset transform for mobile stacking */
+        transform: translateY(0);
       }
 
       nav ul li a {
@@ -233,13 +237,13 @@
 
   <section id="home" data-aos="fade-up">
     <h2>Welcome</h2>
-    <p>Hello! I'm <strong>Mohd Maroof</strong>, a **Computer Science student** focused on **backend development** and **real-world problem solving**.</p>
+    <p>Hello! I'm <strong>Mohd Maroof</strong>, a Computer Science student focused on backend development and real-world problem solving.</p>
   </section>
 
   <section id="about" data-aos="fade-up">
     <h2>About Me</h2>
     <p>
-      I'm <strong>Mohd Maroof</strong>, a **Computer Science undergraduate** passionate about **backend development** and **problem-solving**. I enjoy turning complex challenges into simple, elegant solutions using code. I specialize in building **scalable web applications** and working with **databases**. Currently, I’m focused on expanding my technical skills and contributing to meaningful projects.
+      I'm <strong>Mohd Maroof</strong>, a Computer Science undergraduate passionate about backend development and problem-solving. I enjoy turning complex challenges into simple, elegant solutions using code. I specialize in building scalable web applications and working with databases. Currently, I’m focused on expanding my technical skills and contributing to meaningful projects.
     </p>
     <h3>My Skills:</h3>
     <ul>
@@ -293,6 +297,8 @@
         });
       });
     });
+
+    // REMOVED: All JavaScript related to the scroll-reveal header
   </script>
 </body>
 </html>
